@@ -23,4 +23,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## VUX
 使用VUX时，因为单位不是使用rem，导致单位会有问题。所以把VUX的单位修改成PX，就行了
-* GitHub：[https://github.com/Qiuziscorpio/-qq-UI.git](https://github.com/LWD8/px2rem-demo/blob/master/static/20180928161717.png)
+* GitHub：[https://github.com/LWD8/px2rem-demo/blob/master/static/20180928161717.png](https://github.com/LWD8/px2rem-demo/blob/master/static/20180928161717.png)
