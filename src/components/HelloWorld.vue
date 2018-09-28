@@ -88,12 +88,18 @@
         </a>
       </li>
     </ul>
+    <x-button type="primary" link="/demo">Go to demo list</x-button>
+      <x-button type="default" link="BACK">Back</x-button>
   </div>
 </template>
 
 <script>
+import { XButton } from 'vux'
 export default {
   name: 'HelloWorld',
+  components: {
+    XButton
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -103,7 +109,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="less" scoped>
 //px转换rem
 .top_box{
   display: flex;
