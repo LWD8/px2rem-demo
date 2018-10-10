@@ -90,19 +90,33 @@
     </ul>
     <x-button type="primary" link="/demo">Go to demo list</x-button>
       <x-button type="default" link="BACK">Back</x-button>
+
+    <swiper :aspect-ratio="300/800" loop auto dots-position="center">
+      <swiper-item class="swiper-demo-img" v-for="(item, index) in imgList" :key="index">
+        <img :src="item">
+      </swiper-item>
+    </swiper>
+    <div style="height:100px;"></div>
   </div>
 </template>
 
 <script>
-import { XButton } from 'vux'
+import { XButton, Swiper, SwiperItem } from 'vux'
 export default {
   name: 'HelloWorld',
   components: {
-    XButton
+    XButton,
+    Swiper,
+    SwiperItem
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      imgList: [
+        'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
+        'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg',
+        'https://static.vux.li/demo/5.jpg'
+      ]
     }
   }
 }
@@ -125,5 +139,8 @@ export default {
 }
 .aa{
   font-size: 90px;
+}
+.swiper-demo-img img {
+  width: 100%;
 }
 </style>
