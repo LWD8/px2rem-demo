@@ -81,29 +81,35 @@ const webpackConfig = {
 
 
 module.exports = vuxLoader.merge(webpackConfig, {
-  plugins: ['vux-ui', 'progress-bar', 'duplicate-style',{
+  plugins: ['vux-ui', 'progress-bar', 'duplicate-style', {
     name: 'after-less-parser',
-    fn: function (source) {
-      if (this.resourcePath.replace(/\\/g, '/').indexOf('/vux/src/components') > -1) {
+    fn: function(source) {
+			const sourcePath = this.resourcePath.replace(/\\/g, '/')
+      if (sourcePath.indexOf('vux/src/components') > -1) {
         source = source.replace(/px/g, 'PX')
       }
-      // 自定义的全局样式大部分不需要转换
-      if (this.resourcePath.replace(/\\/g, '/').indexOf('App.vue') > -1) {
-        source = source.replace(/px/g, 'PX').replace(/-1PX/g, '-1px')
-      }
+      // // 自定义的全局样式大部分不需要转换
+      // if (sourcePath.indexOf('App.vue') > -1) {
+      //   source = source.replace(/px/g, 'PX').replace(/-1PX/g, '-1px')
+			// }
       return source
     }
   }, {
-    name: 'style-parser',
-    fn: function (source) {
-      if (this.resourcePath.replace(/\\/g, '/').indexOf('/vux/src/components') > -1) {
+		name: 'style-parser',
+		// <style></style> 代码处理
+    fn: function(source) {
+      const sourcePath = this.resourcePath.replace(/\\/g, '/')
+      if (sourcePath.indexOf('vux/src/components') > -1) {
         source = source.replace(/px/g, 'PX')
       }
       // 避免转换1PX.less文件路径
       if (source.indexOf('1PX.less') > -1) {
         source = source.replace(/1PX.less/g, '1px.less')
-      }
+			}
       return source
     }
+  },{
+    // name: 'less-theme',
+    // path: 'src/styles/theme.less' // 相对项目根目录路径
   }]
 })
